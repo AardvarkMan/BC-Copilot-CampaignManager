@@ -75,7 +75,7 @@ page 50007 ARD_ItemRecommendationPrompt
     }
 
     var
-        TmpItemRecommendations: Record "ARD_CopilotItemRecommendations" temporary;
+        TempItemRecommendations: Record "ARD_CopilotItemRecommendations" temporary;
         JSONDescriptions: JsonArray;
         ChatRequest: Text;
         RequestResponse: Text;
@@ -151,8 +151,8 @@ page 50007 ARD_ItemRecommendationPrompt
         FoundItems: list of [code[20]];
     begin
         // Clear previous recommendations
-        TmpItemRecommendations.Reset();
-        TmpItemRecommendations.DeleteAll();
+        TempItemRecommendations.Reset();
+        TempItemRecommendations.DeleteAll();
 
         // Iterate over each description keyword
         foreach DescriptionToken in Descriptions do begin
@@ -164,16 +164,16 @@ page 50007 ARD_ItemRecommendationPrompt
                 repeat
                     // Avoid duplicates
                     if not FoundItems.Contains(ItemRec."No.") then begin
-                        TmpItemRecommendations.Init();
-                        TmpItemRecommendations."ARD_No." := ItemRec."No.";
-                        TmpItemRecommendations."ARD_Description" := ItemRec.Description;
-                        TmpItemRecommendations.Insert();
+                        TempItemRecommendations.Init();
+                        TempItemRecommendations."ARD_No." := ItemRec."No.";
+                        TempItemRecommendations."ARD_Description" := ItemRec.Description;
+                        TempItemRecommendations.Insert();
                         FoundItems.Add(ItemRec."No.");
                     end;
                 until ItemRec.next() = 0;
         end;
 
         // Load the found recommendations into the subpage
-        CurrPage.SubItemRecommendations.Page.Load(TmpItemRecommendations);
+        CurrPage.SubItemRecommendations.Page.Load(TempItemRecommendations);
     end;
 }
