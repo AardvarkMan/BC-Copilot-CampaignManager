@@ -14,17 +14,6 @@ page 50003 ARD_CopilotSettings
             {
                 Caption = 'General';
 
-                field(Endpoint; Endpoint)
-                {
-                    ApplicationArea = All;
-                    Caption = 'Endpoint';
-                    ToolTip = 'Enter the endpoint URL for the Copilot service.';
-
-                    trigger OnValidate()
-                    begin
-                        IsolatedStorageWrapper.SetEndpoint(Endpoint);
-                    end;
-                }
                 field(Deployment; Deployment)
                 {
                     ApplicationArea = All;
@@ -67,6 +56,5 @@ page 50003 ARD_CopilotSettings
     local procedure GetSettings()
     begin
         Deployment := IsolatedStorageWrapper.GetDeployment();
-        Endpoint := IsolatedStorageWrapper.GetEndpoint();
     end;
 }
