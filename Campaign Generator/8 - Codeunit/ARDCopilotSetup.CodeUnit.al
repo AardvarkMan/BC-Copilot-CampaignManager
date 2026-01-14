@@ -22,7 +22,9 @@ codeunit 50000 ARD_CopilotSetup
             if not CopilotCapability.IsCapabilityRegistered(Enum::"Copilot Capability"::"Customer Detail") then
                 CopilotCapability.RegisterCapability(
                 Enum::"Copilot Capability"::"Customer Detail",
-                Enum::"Copilot Availability"::Preview, LearnMoreUrlTxt);
+                Enum::"Copilot Availability"::Preview,
+                Enum::"Copilot Billing Type"::"Microsoft Billed",
+                LearnMoreUrlTxt);
     end;
 
     [EventSubscriber(ObjectType::Page, Page::"Copilot AI Capabilities", 'OnRegisterCopilotCapability', '', false, false)]

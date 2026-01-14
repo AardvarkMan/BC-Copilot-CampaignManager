@@ -104,7 +104,8 @@ codeunit 50001 ARD_Copilot_BigAL
     local procedure GetSystemPrompt() SystemPrompt: Text
     begin
         // Define the system prompt that instructs the AI on how to process the user's input
-        SystemPrompt := @'You are an AI assistant that helps people find the location of important events in the United States of America. The goal is to identify postal codes for affected areas.';
+        SystemPrompt := @'You are an AI assistant that helps people find the location of important events in the United States of America.
+        The goal is to identify postal codes for affected areas. Please provide as many postal codes as possible based on the user prompt.';
     end;
 
     local procedure HandleError(var AoaiOperationResponse: Codeunit "AOAI Operation Response")

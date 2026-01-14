@@ -5,7 +5,7 @@ page 50003 ARD_CopilotSettings
     PageType = Card;
     UsageCategory = Administration;
     SourceTable = "Integer";
-    
+    DataCaptionExpression = '';
     layout
     {
         area(Content)
@@ -41,6 +41,7 @@ page 50003 ARD_CopilotSettings
                     ApplicationArea = All;
                     Caption = 'API Key';
                     ToolTip = 'Enter the API key for the Copilot service.';
+                    MaskType = Concealed;
                     trigger OnValidate()
                     begin
                         IsolatedStorageWrapper.SetSecretKey(UserAPIKey);

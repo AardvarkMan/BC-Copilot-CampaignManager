@@ -8,9 +8,11 @@ codeunit 50002 ARD_IsolatedStorageWrapper
         IsolatedStorageDeploymentKeyLbl: Label 'CopilotDeployment', Locked = true;
         IsolatedStorageEndpointKeyLbl: Label 'CopilotEndpoint', Locked = true;
 
-    procedure GetSecretKey() SecretKey: Text
+    procedure GetSecretKey() SecretKey: SecretText
+    var
+        BlankSecret: SecretText;
     begin
-        if IsolatedStorage.Get(IsolatedStorageSecretKeyKeyLbl, SecretKey) = false then SecretKey := '';
+        if IsolatedStorage.Get(IsolatedStorageSecretKeyKeyLbl, SecretKey) = false then SecretKey := BlankSecret;
     end;
 
     procedure GetDeployment() Deployment: Text

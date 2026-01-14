@@ -111,7 +111,7 @@ codeunit 50003 ARD_CopilotJimmyTheFish
     begin
         // Define the system prompt that instructs the AI on how to process the user's input
         SystemPrompt := @'You are an AI assistant that helps people find Postal Codes in a response to a user prompt.
-        Please return the Postal Codes in the format of a JSON Object named "PostalCodes" with an array containing objects of: Region Name, array of Postal Codes.
+        Please return the Postal Codes in the format of a JSON Object named "PostalCodes" with an array containing objects of: Region Name, array of Postal Codes. Break any postal code regions into individual postal codes.
         If no Postal Codes are found, return a default message indicating that no Postal Codes were found.';
     end;
 
